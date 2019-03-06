@@ -55,6 +55,18 @@
 								</div>
 						</div>
 
+
+						<div class="form-group">
+							<div class="col-md-12 control">
+								<div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                            Don't have an account! 
+									<a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                            Sign Up Here
+                                	</a>
+                                </div>
+							</div>
+						</div> <!-- signup btn form group close -->
+
 					</form>
 
 				</div>
@@ -67,12 +79,84 @@
 
 		</div>
 
-	</div>
+		<div id="signupbox" style="display: none" class="mainbox col-md-6">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">Sign Up</div>
+					<div style="float:right; position:relative; top:-10px;">
+						<a id="signinlink" href="#" onClick="$('#signupbox').hide(); $('#loginbox').show();">Sign In</a>
+					</div>
+				</div>
+
+				<div class="panel-body">
+					<form id="signupform" class="form-horizontal">
+
+						<div class="form-group">
+							<label for="full_name" class="col-md-3 control-label">Full Name</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" name="full_name" placeholder="Enter Full Name">
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="email" class="col-md-3 control-label">Email</label>
+							<div class="col-md-9">
+								<input type="email" class="form-control" name="email" placeholder="Enter email">
+
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password" class="col-md-3 control-label">Password</label>
+							<div class="col-md-9">
+								<input type="password" class="form-control" name="password" placeholder="Enter password">
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password2" class="col-md-3 control-label">Confirm Password</label>
+							<div class="col-md-9">
+								<input type="password" class="form-control" name="password2" placeholder="Enter password2">
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="address" class="col-md-3 control-label">Address</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" name="address" placeholder="Enter address">
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-9">
+								<button id="btn-signup" type="button" class="btn btn-info">Signup</button>
+							</div>
+						</div>
+
+					</form>
+				</div> <!-- end of panel-body -->
+
+
+			</div>
+		</div> <!-- signupbox ends -->
+
+
+	</div> <!-- container div -->
 
 </body>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/angular.min.js"></script>
+
+	<script>
+
+
+
+	</script>
 
 </html>
