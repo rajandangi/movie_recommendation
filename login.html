@@ -134,8 +134,12 @@
 
 						<div class="form-group">
 							<div class="col-md-9">
-								<button id="btn-signup" type="button" class="btn btn-info">Signup</button>
+								<button ng-click="signup()" id="btn-signup" type="button" class="btn btn-info">Signup</button>
 							</div>
+						</div>
+
+						<div class="error" style="color:red;">
+							{{signuperror}}
 						</div>
 
 					</form>
@@ -160,20 +164,53 @@
 
 		var signupCtrl =  function($scope){
 			$scope.user = {};
+			$scope.signuperror = "";
 
 			console.log('hello signup');
 
 			$scope.validateEmail = function(email){
 
-				if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email){
+				if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
 					return true;
 				}else{
 					return false;
 				}
 			}
 
+			$scope.validatePassword = function(pw1, pw2){
+
+				if(pw1 != pw2){
+					return "Two passwords not matched";
+				}
+
+				if(pw1.length < 6){
+					return "Password must be at least 6 characters";
+				}
+
+				return true;
+
+
+			}
+
 			$scope.signup = function(){
-				console.log('signing up....');
+				var user = $scope.user;
+				console.log(user);
+
+				var v = $scope.validateEmail(user.email);
+				console.log(v)
+
+				if(v == false){
+					$scope.signuperror = "Invalid Email !!";
+					return;
+				}
+
+				v = $scope.validatePassword(user.password, user.password2);
+
+				if(v != true){
+					$scope.signuperror = v;
+				}
+
+
 
 
 			}
@@ -190,5 +227,15 @@
 
 
 	</script>
+<!-- Footer -->
+<footer class="page-footer font-small blue">
 
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="#"> MR</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 </html>
