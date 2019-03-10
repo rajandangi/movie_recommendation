@@ -1,4 +1,4 @@
-<html>
+<html ng-app="movieRecommender">
 
 <head>
 
@@ -15,7 +15,7 @@
 
 	<div class="container">
 
-		<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6">
+		<div ng-controller="loginCtrl" id="loginbox" style="margin-top:50px;" class="mainbox col-md-6">
 
 			<div class="panel panel-info">
 
@@ -79,7 +79,7 @@
 
 		</div>
 
-		<div id="signupbox" style="display: none" class="mainbox col-md-6">
+		<div ng-controller="signupCtrl" id="signupbox" style="display: none" class="mainbox col-md-6">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="panel-title">Sign Up</div>
@@ -89,20 +89,21 @@
 				</div>
 
 				<div class="panel-body">
-					<form id="signupform" class="form-horizontal">
+					<form ng-submit="signup()" novalidate id="signupform" class="form-horizontal">
 
 						<div class="form-group">
 							<label for="full_name" class="col-md-3 control-label">Full Name</label>
 							<div class="col-md-9">
-								<input type="text" class="form-control" name="full_name" placeholder="Enter Full Name">
+								<input ng-model="user.full_name" type="text" class="form-control" name="full_name" placeholder="Enter Full Name">
 								
 							</div>
 						</div>
+						<h2>{{user.full_name}}</h2>
 
 						<div class="form-group">
 							<label for="email" class="col-md-3 control-label">Email</label>
 							<div class="col-md-9">
-								<input type="email" class="form-control" name="email" placeholder="Enter email">
+								<input ng-model="user.email" type="email" class="form-control" name="email" placeholder="Enter email">
 
 							</div>
 						</div>
@@ -110,7 +111,7 @@
 						<div class="form-group">
 							<label for="password" class="col-md-3 control-label">Password</label>
 							<div class="col-md-9">
-								<input type="password" class="form-control" name="password" placeholder="Enter password">
+								<input ng-model="user.password" type="password" class="form-control" name="password" placeholder="Enter password">
 								
 							</div>
 						</div>
@@ -118,7 +119,7 @@
 						<div class="form-group">
 							<label for="password2" class="col-md-3 control-label">Confirm Password</label>
 							<div class="col-md-9">
-								<input type="password" class="form-control" name="password2" placeholder="Enter password2">
+								<input ng-model="user.password2" type="password" class="form-control" name="password2" placeholder="Enter password2">
 								
 							</div>
 						</div>
@@ -126,7 +127,7 @@
 						<div class="form-group">
 							<label for="address" class="col-md-3 control-label">Address</label>
 							<div class="col-md-9">
-								<input type="text" class="form-control" name="address" placeholder="Enter address">
+								<input ng-model="user.address" type="text" class="form-control" name="address" placeholder="Enter address">
 								
 							</div>
 						</div>
@@ -154,6 +155,37 @@
 	<script src="js/angular.min.js"></script>
 
 	<script>
+
+		var app = angular.module('movieRecommender', []);
+
+		var signupCtrl =  function($scope){
+			$scope.user = {};
+
+			console.log('hello signup');
+
+			$scope.validateEmail = function(email){
+
+				if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email){
+					return true;
+				}else{
+					return false;
+				}
+			}
+
+			$scope.signup = function(){
+				console.log('signing up....');
+
+
+			}
+		};
+
+		var loginCtrl =  function($scope){
+			console.log('hello login');
+		};
+
+		app.controller('signupCtrl', signupCtrl);
+
+		app.controller('loginCtrl', loginCtrl);
 
 
 
