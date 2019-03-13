@@ -1,17 +1,19 @@
 
 		var app = angular.module('movieRecommender', ['ngRoute']);
 
-		app.config(function($routeProvider){
+		app.config(function($routeProvider, $locationProvider){
 			$routeProvider
 			.when("/login", {
 				templateUrl: "login.html"
 			})
 			.when("/home", {
-				template: "<h1> this is homepage</h1>"
+				templateUrl: "home.html"
 			})
 			.otherwise({
-				template: "<h1>Invalid Route</h1>"
-			})
+				template: "<h1>Welcome !</h1>"
+			});
+
+			$locationProvider.html5Mode(true);
 		})
 
 		var signupCtrl =  function($scope, $http){
