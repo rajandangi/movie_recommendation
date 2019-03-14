@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: belwasetech
+Build-Jdk: 10.0.1
+Implementation-Title: movie_recommender_backend
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.btech.movie_recommender
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/movie_recommender_backend
+Created-By: Maven Integration for Eclipse
+
