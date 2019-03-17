@@ -1,0 +1,138 @@
+
+		<div ng-controller="loginCtrl" id="loginbox" style="margin-top:50px;" class="mainbox col-md-6">
+
+			<div class="panel panel-info">
+
+				<div class="panel-heading">
+					<div class="panel-title">Sign in
+						<a class="pull-right" href="#">Forgot Password?</a>
+					</div>
+
+					
+				</div>
+
+				<div class="panel-body">
+
+					<form id="loginform" class="form-horizontal">
+
+
+						<div style="margin-bottom:20px;" class="input-group">
+
+							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i>
+							</span>
+
+							<input ng-model="user.email" type="email" class="form-control" name="email" placeholder="Enter Email">
+
+						</div>
+
+						<div style="margin-bottom:20px;" class="input-group">
+
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+							<input ng-model="user.password" type="password" class="form-control" name="password" placeholder="Enter Password">
+
+						</div>
+
+						<div class="form-group">
+								<div class="col-sm-12">
+									<a ng-click="login()" id="btn-login" href="#" class="btn btn-success">Login</a>
+								</div>
+						</div>
+
+
+						<div class="form-group">
+							<div class="col-md-12 control">
+								<div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                            Don't have an account! 
+									<a href="" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                            Sign Up Here
+                                	</a>
+                                </div>
+							</div>
+						</div> <!-- signup btn form group close -->
+
+						<div class="error" style="color:red;">
+							{{loginError}}
+						</div>
+
+					</form>
+
+				</div>
+
+				<!-- <div style="float:right; position:relative; top:-25;">
+					<a href="#">Forgot Password?</a>
+				</div> -->
+
+			</div>
+
+		</div>
+
+		<div ng-controller="signupCtrl" id="signupbox" style="display: none" class="mainbox col-md-6">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">Sign Up</div>
+					<div style="float:right; position:relative; top:-10px;">
+						<a id="signinlink" href="#" onClick="$('#signupbox').hide(); $('#loginbox').show();">Sign In</a>
+					</div>
+				</div>
+
+				<div class="panel-body">
+					<form ng-submit="signup()" novalidate id="signupform" class="form-horizontal">
+
+						<div class="form-group">
+							<label for="full_name" class="col-md-3 control-label">Full Name</label>
+							<div class="col-md-9">
+								<input ng-model="user.full_name" type="text" class="form-control" name="full_name" placeholder="Enter Full Name">
+								
+							</div>
+						</div>
+						<h2>{{user.full_name}}</h2>
+
+						<div class="form-group">
+							<label for="email" class="col-md-3 control-label">Email</label>
+							<div class="col-md-9">
+								<input ng-model="user.email" type="email" class="form-control" name="email" placeholder="Enter email">
+
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password" class="col-md-3 control-label">Password</label>
+							<div class="col-md-9">
+								<input ng-model="user.password" type="password" class="form-control" name="password" placeholder="Enter password">
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password2" class="col-md-3 control-label">Confirm Password</label>
+							<div class="col-md-9">
+								<input ng-model="user.password2" type="password" class="form-control" name="password2" placeholder="Enter password2">
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="address" class="col-md-3 control-label">Address</label>
+							<div class="col-md-9">
+								<input ng-model="user.address" type="text" class="form-control" name="address" placeholder="Enter address">
+								
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-9">
+								<button ng-click="signup()" id="btn-signup" type="button" class="btn btn-info">Signup</button>
+							</div>
+						</div>
+
+						<div class="error" style="color:red;">
+							{{signuperror}}
+						</div>
+
+					</form>
+				</div> <!-- end of panel-body -->
+
+
+			</div>
+		</div> <!-- signupbox ends -->
