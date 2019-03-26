@@ -1,15 +1,20 @@
 package models;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import utils.Generator;;
 
 @Entity
 @Table(name="user")
-public class User {
+public class User implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String username;
 	private String password;
 	
@@ -19,11 +24,12 @@ public class User {
 	private String full_name;
 	private String address;
 	
-	public void setId(Long id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 	

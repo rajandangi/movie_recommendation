@@ -21,15 +21,15 @@
 
 		</form>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+			<li ng-show="loggedIn==false" ><a href="/login"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+			<li ng-show="loggedIn==false"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
 
 		</ul>
 	</div>
 </nav>
 
-<div class="row">
-	<div class="col-md-9">
+<div class="row" style="height:500px;">
+	<div ng-show="loggedIn==true" class="col-md-9">
 		<div class="row">
 			<h2>Movies You May Like</h2>
 			<div class="col-md-5">
@@ -53,6 +53,13 @@
 					<p>A princess lost in her world !!</p>
 				</div>
 			</div>
+		</div>
+	</div>
+	
+	<div ng-show="loggedIn==false" class="col-md-9">
+		<div class="row">
+			<h2>Please login to see your dashboard</h2>
+			
 		</div>
 	</div>
 
