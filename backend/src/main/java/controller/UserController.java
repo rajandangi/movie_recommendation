@@ -43,7 +43,7 @@ public class UserController {
 	    
 	}
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value="/{userId}", method=RequestMethod.GET)
 	 public Optional<User> getUser(@PathVariable Integer userId) {
         return userService.getUser(userId);
 	 }

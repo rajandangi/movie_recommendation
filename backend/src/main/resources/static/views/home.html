@@ -23,6 +23,9 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li ng-show="loggedIn==false" ><a href="/login"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
 			<li ng-show="loggedIn==false"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+			
+			<li ng-show="loggedIn==true"><a href="#">Hi {{user.full_name}}</a></li>
+			<li ng-show="loggedIn==true"><a ng-click="signout()" href="#"><span class="glyphicon glyphicon-log-out"></span>SignOut</a></li>
 
 		</ul>
 	</div>

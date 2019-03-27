@@ -13,6 +13,9 @@
 			.when("/home", {
 				templateUrl: "views/home.html"
 			})
+			.when("/", {
+				templateUrl: "views/home.html"
+			})
 			.otherwise({
 				template: "<h1>Welcome !</h1>"
 			});
@@ -28,15 +31,18 @@
 			        $rootScope.loggedIn = false;
 			        $rootScope.userId = false;
 			        $rootScope.userToken = '';
+			        $rootScope.user = {}
 			        $cookieStore.put('loggedIn', $rootScope.loggedIn);
 			        $cookieStore.put('userId', $rootScope.userId);
 			        $cookieStore.put('userToken', $rootScope.userToken);
+			        $cookieStore.put('user', $rootScope.user);
 			    }
 			
 			   /// Cookies 
 			    $rootScope.userToken = $cookieStore.get('userToken');
 			    $rootScope.loggedIn = $cookieStore.get('loggedIn');
 			    $rootScope.userId = $cookieStore.get('userId');
+			    $rootScope.user = $cookieStore.get('user');
 			
 			console.log('login', $rootScope.loggedIn);
 			    
@@ -47,14 +53,15 @@
 			
 			        $http.defaults.headers.common['Authorization'] = 'JWT ' + $rootScope.userToken;
 			
-			        $http.get($rootScope.API_URL+'/api/authenticate/').then(function(response){
-			                var success = response.data.success;
-			                if (success === true){
-			                    
+			        $http.get($rootScope.API_URL+'/api/user/'+$rootScope.userId).then(function(response){
+			                var id = response.data.id;
+			                if (typeof(id) !== 'undefined'){
+			                    $rootScope.user = response.data;
 			                    $rootScope.loggedIn = true;
-			                    $rootScope.userId = response.data.result.id;
+			                    $rootScope.userId = response.data.id;
 			                    $cookieStore.put('loggedIn', $rootScope.loggedIn);
 			                    $cookieStore.put('userId', $rootScope.userId);
+			                    $cookieStore.put('user', $rootScope.user);
 			
 			                   
 			
