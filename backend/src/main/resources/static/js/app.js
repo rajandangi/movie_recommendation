@@ -180,14 +180,9 @@
 					return;
 				}
 
-				if(user.email = 'ab@gmail.com' && user.password == '123456'){
-					$scope.loginError = 'You are logged in !!';
-				}else{
-					$scope.loginError = 'Invalid email/password';
-				}
 
 				$http({
-					url: 'http://127.0.0.1:8080/api/user/login',
+					url: $rootScope.API_URL + '/api/user/login',
 					method: "POST",
 					data: user
 				}).then(function(response){
@@ -227,8 +222,41 @@
 
 
 		};
+		
+		var homeCtrl =  function($scope, $http, $rootScope, $cookies, $cookieStore,  jwtHelper){
+			$scope.movies = [];
+			$scope.recommended_movies = [];
+			$scope.keyword = '';
+			$scope.results = [];
+			$http({
+				url: $rootScope.API_URL + '/api/movie/',
+				method: "GET"
+				
+			}).then(function(response){
+				console.log(response);
+				$scope.movies = response.data;
+				
+			});
+			
+			$scope.searchMovie = function(){
+				$http({
+					url: $rootScope.API_URL + '/api/movie/search/'+$scope.keyword,
+					method: "GET"
+					
+				}).then(function(response){
+					console.log(response);
+					$scope.results = response.data;
+					
+				});
+				
+			}
+			
+
+		}
 
 		app.controller('signupCtrl', signupCtrl);
 
 		app.controller('loginCtrl', loginCtrl);
+		
+		app.controller('homeCtrl', homeCtrl);
 

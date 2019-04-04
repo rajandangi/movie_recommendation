@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class HomeController {
-	@RequestMapping(value= {"/", "/home", "/login"})
+	@RequestMapping(value= {"/", "/home", "/login", "/movie", "/search"})
 	public String home() {
 		return "index";
 	}

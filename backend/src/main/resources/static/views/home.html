@@ -1,4 +1,4 @@
-
+<div ng-controller="homeCtrl">>
 <nav class="navbar navbar-inverse">
 
 	<div class="container-fluid">
@@ -8,15 +8,15 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Home</a></li>
-			<li class=""><a href="#">Contact</a></li>
+			<!-- <li class=""><a href="#">Contact</a></li> -->
 		</ul>
 
 		<form class="navbar-form navbar-left" action="">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
+				<input ng-model="keyword" type="text" class="form-control" placeholder="Search">
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="button" class="btn btn-default" ng-click="searchMovie()">Submit</button>
 			</div>
 
 		</form>
@@ -31,31 +31,48 @@
 	</div>
 </nav>
 
-<div class="row" style="height:500px;">
+<div  class="row" style="height:800px;">
+
+	<div ng-show="results.length > 0" class="row">
+			<h2>Search results for {{keyword}}</h2>
+			<div ng-repeat="movie in results" class="col-md-5">
+				<img src="images/{{movie.image}}">
+				<div class="desc">
+					<h5><a href="#">{{movie.name}}</a></h5>
+					<p>{{movie.description}}</p>
+				</div>
+			</div>
+			
+			
+	</div>
+		
 	<div ng-show="loggedIn==true" class="col-md-9">
 		<div class="row">
-			<h2>Movies You May Like</h2>
-			<div class="col-md-5">
-				<img src="images/m1.jpg">
+			<h2>Movies you make like..</h2>
+			<div ng-repeat="movie in recommended_movies" class="col-md-5">
+				<img src="images/{{movie.image}}">
 				<div class="desc">
-					<h5><a href="#">Action movie 1</a></h5>
-					<p>A great action movie featuring..</p>
+					<h5><a href="#">{{movie.name}}</a></h5>
+					<p>{{movie.description}}</p>
 				</div>
 			</div>
-			<div class="col-md-5">
-				<img src="images/m2.jpg">
+		</div>
+		<hr>
+		<hr>
+		<!-- <div class="row">
+			<h2>All movies..</h2>
+			<div ng-repeat="movie in movies" class="col-md-5">
+				<img src="images/{{movie.image}}">
 				<div class="desc">
-					<h5><a href="#">Romantic movie 1</a></h5>					
-					<p>A great romantic movie featuring..</p>
+					<h5><a href="#">{{movie.name}}</a></h5>
+					<p>{{movie.description}}</p>
 				</div>
 			</div>
-			<div class="col-md-5">
-				<img src="images/m3.jpg">
-				<div class="desc">
-					<h5><a href="#">Dear Princess</a></h5>
-					<p>A princess lost in her world !!</p>
-				</div>
-			</div>
+			
+			
+		</div> -->
+		<div class="row">
+			
 		</div>
 	</div>
 	
@@ -66,7 +83,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-3">
+	<!-- <div class="col-md-3">
 
 		<div class="sidebar-nav-fixed pull-right affix">
 			<div class="well">
@@ -80,6 +97,7 @@
 			</div>
 		</div>
 
-	</div>
+	</div> -->
 
+</div>
 </div>
